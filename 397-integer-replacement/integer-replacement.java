@@ -4,6 +4,7 @@ class Solution {
 
     private int integerReplacement(long n){
         if (n == 1) return 0;
+        if (n == 3) return 2;
 
         if (memo.containsKey(n))
             return memo.get(n);
