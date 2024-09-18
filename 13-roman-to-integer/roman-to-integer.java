@@ -1,35 +1,54 @@
 class Solution {
     public int romanToInt(String s) {
-        // Create a map to store the Roman numerals and their corresponding values
-        Map<Character, Integer> romanMap = new HashMap<>();
-        romanMap.put('I', 1);
-        romanMap.put('V', 5);
-        romanMap.put('X', 10);
-        romanMap.put('L', 50);
-        romanMap.put('C', 100);
-        romanMap.put('D', 500);
-        romanMap.put('M', 1000);
+        int result = 0;
 
-        int total = 0;  // To store the final result
-        int prevValue = 0;  // To store the value of the previous Roman numeral
+        // The Roman letter is written form largest to smallest
+        // => if there is a reversion (smaller letter is written before larger) then need to do a subtraction
 
-        // Traverse the string from left to right
-        for (int i = 0; i < s.length(); i++) {
-            int currentValue = romanMap.get(s.charAt(i));  // Get the value of the current Roman numeral
+        // Question: will the input always be upper_case ? => handle lower case first
 
-            // If the current value is greater than the previous value, it's a subtractive combination
-            if (currentValue > prevValue) {
-                // Subtract twice the previous value because it was added before
-                total += currentValue - 2 * prevValue;
-            } else {
-                // Otherwise, just add the current value
-                total += currentValue;
+        // Loop through the Roman string
+
+        s = s.toLowerCase();
+
+        for (int i = 0; i < s.length(); i++){
+            switch (s.charAt(i)){
+                case 'i':
+                    if ((i+1) < s.length() && (s.charAt(i+1) == 'v' || s.charAt(i+1) == 'x')){
+                        result -= 1;
+                    }else {
+                        result += 1;
+                    }
+                    break;
+                case 'v':
+                    result += 5;
+                    break;
+                case 'x':
+                    if ((i+1) < s.length() && (s.charAt(i+1) == 'l' || s.charAt(i+1) == 'c')){
+                        result -= 10;
+                    }else {
+                        result += 10;
+                    }
+                    break;
+                case 'l':
+                    result += 50;
+                    break;
+                case 'c':
+                    if ((i+1) < s.length() && (s.charAt(i+1) == 'd' || s.charAt(i+1) == 'm')){
+                        result -= 100;
+                    }else {
+                        result += 100;
+                    }
+                    break;
+                case 'd':
+                    result += 500;
+                    break;
+                case 'm':
+                    result += 1000;
+                    break;
             }
-
-            // Update the previous value to the current one for the next iteration
-            prevValue = currentValue;
         }
 
-        return total;
+        return result;
     }
 }
