@@ -10,16 +10,14 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        myStore = []
+        slow = head
+        fast = head
 
-        current = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-        while current:
-            if id(current) in myStore:
+            if slow == fast:
                 return True
 
-            myStore.append(id(current))
-
-            current = current.next
-        
         return False
