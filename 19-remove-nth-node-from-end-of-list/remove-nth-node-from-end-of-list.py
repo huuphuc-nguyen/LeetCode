@@ -10,23 +10,32 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        
-        length = 1
+        # Find the length
+        len = 1
         current = head
 
         while current.next is not None:
-            length += 1
             current = current.next
+            len += 1
 
-        delete_pos = length - n + 1
+        # find the index counted from the beginning
+        # 5, n = 2, index to delete: 4: 5 - n + 1
 
-        if delete_pos == 1:
-            return head.next
+        # current at index 3
+        # current.next = cr.next.next
         
-        current = head
-        for i in range (1, delete_pos - 1):
-            current = current.next
+        prev_del_position = len - n
 
+        if len == 1:
+            return None
+        
+        if prev_del_position == 0:
+            return head.next
+
+        current = head
+        for i in range(1, prev_del_position):
+            current = current.next
+        
         current.next = current.next.next
 
         return head
