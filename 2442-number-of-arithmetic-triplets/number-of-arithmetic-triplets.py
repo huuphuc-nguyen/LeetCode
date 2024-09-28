@@ -13,6 +13,5 @@ class Solution(object):
 
             if (number_next in nums) and (number_next_next in nums):
                 result += 1
-                print(nums[i], number_next, number_next_next)
 
         return result
