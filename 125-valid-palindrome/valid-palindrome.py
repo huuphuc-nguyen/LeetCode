@@ -15,7 +15,10 @@ class Solution(object):
 
         # pre-process string: remove space and non-alphanumeric characters
         # lowercase
-        s2 = ''.join([char for char in s.lower() if char.isalnum()])
+        s2 = ''
+        for char in s.lower(): 
+            if char.isalnum():
+                s2+=char
 
 
         # check for palindrome
