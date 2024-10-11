@@ -11,22 +11,22 @@ class Solution(object):
         :rtype: ListNode
         """
 
-        before_head = ListNode(0)  
-        after_head = ListNode(0)   
-        before = before_head
-        after = after_head
-        
+        l_list_head = ListNode(0)
+        ge_list_head = ListNode(0)
+
+        current_less = l_list_head
+        current_ge = ge_list_head
+
         while head:
             if head.val < x:
-                before.next = head
-                before = before.next
+                current_less.next = head
+                current_less = current_less.next
             else:
-                after.next = head
-                after = after.next
+                current_ge.next = head
+                current_ge = current_ge.next
             head = head.next
         
-        after.next = None  
-        before.next = after_head.next  
+        current_less.next = ge_list_head.next
+        current_ge.next = None
 
-        return before_head.next  
-            
+        return l_list_head.next
