@@ -6,36 +6,70 @@ class Solution(object):
         """
 
 
-        current_num = 0
-        sign = 1
-        rs = 0
-        stack = []
-        for char in s:
-            if char.isdigit():
-                current_num = current_num * 10 + int(char)
-            elif char == "+":
-                rs += sign*current_num
-                current_num = 0
-                sign = 1
-            elif char == "-":
-                rs += sign*current_num
-                current_num=0
-                sign=-1
-            elif char == "(":
-                stack.append(rs)
-                stack.append(sign)
-                rs = 0
-                sign = 1
-            elif char == ")":
-                rs += sign*current_num
-                sign = stack.pop()
-                old_rs = stack.pop()
-                rs = old_rs + sign*rs
-                current_num = 0
-        
-        rs +=sign*current_num
+        # 1 - ( -2)
+        #   c
 
-        return rs
+        # number = 1
+        # sum = 1
+        # sign = -1
+
+        # stack <- sum <- sign
+
+        # sum += sign*number
+
+        # old_sign = stack.pop()
+        # sum = sum * old_sign
+
+
+
+
+        # number = 0
+        # sign = 1
+
+
+
+
+        number = 0
+        sign = 1
+        sum = 0
+        stack = []
+
+        for c in s:
+            if c.isdigit():
+                number = number * 10 + int(c)
+            elif c == "+":
+                sum += sign*number
+                number = 0
+                sign = 1
+            elif c == "-":
+                sum += sign*number
+                number = 0
+                sign = -1
+            elif c == "(":
+                stack.append(sum)
+                stack.append(sign)
+                sum = 0
+                number = 0
+                sign = 1
+            elif c == ")":
+                sum += sign*number
+
+                old_sign = stack.pop()
+                sum *= old_sign
+
+                old_sum = stack.pop()
+                sum+= old_sum
+
+                number = 0
+                sign = 1
+
+            
+        sum += sign*number
+
+        return sum
+        
+
+
 
 
 
