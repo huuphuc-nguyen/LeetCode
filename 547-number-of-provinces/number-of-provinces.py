@@ -8,7 +8,6 @@ class Solution(object):
         count = 0
 
         def dfs(city):
-            visited.append(city)
             for neighbor in range(len(isConnected)):
                 if isConnected[city][neighbor] == 1 and neighbor not in visited:
                     visited.append(neighbor)
@@ -17,6 +16,8 @@ class Solution(object):
         for city in range(len(isConnected)):
             if city not in visited:
                 count += 1
+                visited.append(city)
+
                 dfs(city)
         
         return count
