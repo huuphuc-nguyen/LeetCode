@@ -4,24 +4,21 @@ class Solution(object):
         :type isConnected: List[List[int]]
         :rtype: int
         """
-        visited = []
+
         count = 0
+        visited = []
 
         def dfs(city):
-            for neighbor in range(len(isConnected)):
-                if isConnected[city][neighbor] == 1 and neighbor not in visited:
-                    visited.append(neighbor)
-                    dfs(neighbor)
+            for connected_city in range(len(isConnected)):
+                if connected_city not in visited and isConnected[city][connected_city] == 1:
+                    visited.append(connected_city)
+                    dfs(connected_city)
 
         for city in range(len(isConnected)):
             if city not in visited:
                 count += 1
                 visited.append(city)
-
                 dfs(city)
-        
+
         return count
-
-        
-
 
