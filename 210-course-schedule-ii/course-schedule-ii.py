@@ -6,35 +6,36 @@ class Solution(object):
         :rtype: List[int]
         """
         graph = {}
-        amount_pre = {}
+        degree = {}
 
         for i in range(numCourses):
-            amount_pre[i] = 0
             graph[i] = []
+            degree[i] = 0
 
-    
         for course, pre in prerequisites:
-            amount_pre[course] += 1
             graph[pre].append(course)
+            degree[course] += 1
 
-        q = []
-        visited = []
+        q =[]
+        visited =[]
 
-        for course in range(numCourses):
-            if amount_pre[course] == 0:
-                q.append(course)
+        for i in range(numCourses):
+            if degree[i] == 0:
+                q.append(i)
         
         while q:
             course = q.pop(0)
             visited.append(course)
 
             for next_course in graph[course]:
-                amount_pre[next_course] -= 1
-                if amount_pre[next_course] == 0:
+                degree[next_course] -= 1
+                if degree[next_course] == 0:
                     q.append(next_course)
-        
         if len(visited) == numCourses:
             return visited
         else:
             return []
 
+
+
+        
