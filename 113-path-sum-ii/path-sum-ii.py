@@ -17,16 +17,16 @@ class Solution(object):
             if node is None:
                 return
 
+            mylist.append(node.val)
 
             if node.left is None and node.right is None:
-                mylist.append(node.val)
                 if sum(mylist) == targetSum:
-                    result.append(mylist)
+                    result.append(list(mylist)) 
 
-            print(mylist)
+            dfs(node.left, mylist)
+            dfs(node.right, mylist)
 
-            dfs(node.left, mylist + [node.val])
-            dfs(node.right, mylist + [node.val])
+            mylist.pop()
         
         dfs(root, [])
 
