@@ -7,16 +7,6 @@ class Solution(object):
         if not answers:
             return 0
 
-        # 1 1 2 2 2 2 
-        #           x
-
-        # prev = 2
-        # fre = 1
-
-        # arr = [
-        #     1 2 2
-        # ]
-        
         prev = -1
         fre = 0
         arr = []
@@ -25,12 +15,11 @@ class Solution(object):
 
         for ans in answers:
             if ans != prev:
-                fre = 1
+                fre  = 1
                 arr.append(ans)
                 prev = ans
-            else: # ans == prev
+            else:
                 fre += 1
-                
                 if fre <= ans + 1:
                     prev = ans
                 else:
@@ -38,8 +27,6 @@ class Solution(object):
                     arr.append(ans)
                     prev = ans
 
-        print(arr)
-                
         return sum(arr) + len(arr)
 
     
