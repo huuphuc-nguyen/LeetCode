@@ -1,15 +1,10 @@
 class Solution:
     def chalkReplacer(self, chalk: List[int], k: int) -> int:
-
-        chalk_for_one_round = sum(chalk)
-
-        # cfor > given k O(n)
-        # cfor == given k O(n)
-        # cfor < given k
-        k = k%chalk_for_one_round
+        k = k % sum(chalk)
 
         # Idea: decrease the k until it is negative => probelm: if k is to gib have to run so many round
         # Solve: calculate the sum of array then use modular
+        
         i = 0
 
         while True:
