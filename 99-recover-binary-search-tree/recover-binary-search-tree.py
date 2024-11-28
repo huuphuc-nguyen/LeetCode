@@ -9,17 +9,14 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        string = []
-        # key: number, val: node pref => use big, small value to get 2 nodes and change it value
-        nodes = {}
+        nodes = []
 
         def inorder(node):
             if not node:
                 return
             
             inorder(node.left)
-            string.append(node.val)
-            nodes[node.val] = node
+            nodes.append(node)
             inorder(node.right)
         
         inorder(root)
@@ -28,15 +25,12 @@ class Solution:
         bigvalue = None
         smallvalue = None
 
-        for i in range(len(string) - 1):
-            if string[i] > string[i+1]:
+        for i in range(len(nodes) - 1):
+            if nodes[i].val > nodes[i+1].val:
                 if not bigvalue:
-                    bigvalue = string[i] # only get the 1st element that satisfy above confiditon from the left
-                smallvalue = string[i+1]
+                    bigvalue = nodes[i] # only get the 1st element that satisfy above confiditon from the left
+                smallvalue = nodes[i+1]
         
-        if bigvalue != None and smallvalue != None:
-            nodes[bigvalue].val = smallvalue
-            nodes[smallvalue].val = bigvalue
-
-        print(nodes)
-        
+        if bigvalue and smallvalue:
+            bigvalue.val, smallvalue.val = smallvalue.val, bigvalue.val
+   
