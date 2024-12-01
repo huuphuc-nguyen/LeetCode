@@ -9,6 +9,7 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
+        # Create a new linked list with dummy head, perform pre order search and create new node corresponding to the current node that is iterated, then add it to the list. modify the root poiting to the new list
 
         if not root:
             return
@@ -18,11 +19,13 @@ class Solution:
 
         def dfs(node):
             nonlocal current
+
             if not node:
                 return
 
             current.right = TreeNode(node.val)
             current = current.right
+
             dfs(node.left)
             dfs(node.right)
 
