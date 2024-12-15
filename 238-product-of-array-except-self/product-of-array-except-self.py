@@ -19,18 +19,16 @@ class Solution:
 
         # Followup: utilize prefix as the return array, use 1 variable to keep track suffix sum
         
-        n = len(nums)
-        result = [1] * n  # This will act as the "prefix" array
+        prefix= [0] * len(nums)
+        prefix[0] = 1
+        for i in range(1, len(nums)):
+            prefix[i] = nums[i-1] * prefix[i-1]
         
-        # Step 1: Calculate the prefix products and store in result
-        for i in range(1, n):
-            result[i] = result[i - 1] * nums[i - 1]
-        
-        # Step 2: Calculate the suffix product while updating the result
         suffix = 1
-        for i in range(n - 1, -1, -1):
-            result[i] *= suffix
+        
+        for i in range(len(nums)-1,-1,-1):
+            prefix[i] *= suffix
             suffix *= nums[i]
         
-        return result
+        return prefix
 
