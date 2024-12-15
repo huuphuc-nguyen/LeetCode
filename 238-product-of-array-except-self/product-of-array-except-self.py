@@ -1,10 +1,10 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         #   1         2           3          4 
-        # 2 3 4     1 3 4       1 2 4      1 2 3 
+    #result: 2 3 4     1 3 4       1 2 4      1 2 3 
 
-        # 1           1          1 2       1 2 3
-        # 1 2 3 4     3 4        4          1
+    #preifx:  1           1          1 2       1 2 3
+    #suffix: 1 2 3 4     3 4        4          1
 
         prefix= [0] * len(nums)
         suffix= [0] * len(nums)
