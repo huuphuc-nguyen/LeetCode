@@ -1,16 +1,12 @@
-class Solution(object):
-    def isSubsequence(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
-        s_index, t_index = 0, 0
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        s_pointer = 0
+        t_pointer = 0
 
-        while s_index < len(s) and t_index < len(t):
-            if s[s_index] == t[t_index]:
-                s_index += 1
-            t_index += 1
+        while t_pointer < len(t) and s_pointer < len(s):
+            if t[t_pointer] == s[s_pointer]:
+                s_pointer+= 1
+            
+            t_pointer +=1
 
-        return s_index == len(s)
-        
+        return s_pointer == len(s)
