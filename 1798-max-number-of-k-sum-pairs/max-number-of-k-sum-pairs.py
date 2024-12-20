@@ -11,10 +11,9 @@ class Solution:
         op = 0
 
         while l < r:
-            sum = nums[l] + nums[r]
-            if sum < k:
+            if nums[l] + nums[r] < k:
                 l += 1
-            elif sum > k:
+            elif nums[l] + nums[r] > k:
                 r -= 1
             else:
                 op += 1
