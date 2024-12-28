@@ -3,3 +3,4 @@
 1456-maximum-number-of-vowels-in-a-substring-of-given-length|Medium|1734760800000
 933-number-of-recent-calls|Easy|1734847200000
 1732-find-the-highest-altitude|Easy|1735365600000
+724-find-pivot-index|Easy|1735365600000
