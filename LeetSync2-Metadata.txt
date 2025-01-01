@@ -6,3 +6,4 @@
 724-find-pivot-index|Easy|1735365600000
 1207-unique-number-of-occurrences|Easy|1735452000000
 1657-determine-if-two-strings-are-close|Medium|1735452000000
+2390-removing-stars-from-a-string|Medium|1735624800000
