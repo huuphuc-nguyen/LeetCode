@@ -1,37 +1,20 @@
-class Solution(object):
-    def asteroidCollision(self, asteroids):
-        """
-        :type asteroids: List[int]
-        :rtype: List[int]
-        """
-
-        # 5 10 -5
-
-        # stack = 5 10 10
-
-        # collision when the upcoming value has opposite sign with the top value of stack:
-        #     => if upcoming asteroid is smaller than the top then skip it
-        #     => if up coming asteroid is bigget than the top, ex: 5 and up coming -10 => need a while loop to pop all the asteroid that less than upcoming value, then add it to stsack
-
+class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
         stack = []
-
+        
         for asteroid in asteroids:
-            destroyed = False
-
-            while stack and asteroid < 0 and stack[-1] > 0:
-                if abs(asteroid) > stack[-1]:
-                    stack.pop()  # Right-moving asteroid is smaller, it explodes
-                    continue
-                elif abs(asteroid) == stack[-1]:
-                    stack.pop()  # Both asteroids are the same size, both explode
-                    destroyed = True
+            while stack and asteroid < 0 < stack[-1]:  # Collision condition
+                if abs(asteroid) > abs(stack[-1]):  # Current asteroid is larger
+                    stack.pop()
+                elif abs(asteroid) == abs(stack[-1]):  # Both are the same size
+                    stack.pop()
+                    asteroid = 0  # Current asteroid also explodes
                     break
-                else:
-                    destroyed = True  # Current asteroid explodes, stack asteroid survives
+                else:  # Top asteroid is larger
+                    asteroid = 0  # Current asteroid explodes
                     break
-
-            if not destroyed:
+            
+            if asteroid:  # If the asteroid is not destroyed, add it to the stack
                 stack.append(asteroid)
         
         return stack
-        
