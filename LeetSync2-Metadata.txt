@@ -9,3 +9,4 @@
 2390-removing-stars-from-a-string|Medium|1735624800000
 735-asteroid-collision|Medium|1735711200000
 394-decode-string|Medium|1735797600000
+649-dota2-senate|Medium|1735884000000
