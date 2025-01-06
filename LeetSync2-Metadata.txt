@@ -11,3 +11,4 @@
 394-decode-string|Medium|1735797600000
 649-dota2-senate|Medium|1735884000000
 2095-delete-the-middle-node-of-a-linked-list|Medium|1735970400000
+206-reverse-linked-list|Easy|1736143200000
