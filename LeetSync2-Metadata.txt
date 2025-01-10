@@ -14,3 +14,4 @@
 206-reverse-linked-list|Easy|1736143200000
 2130-maximum-twin-sum-of-a-linked-list|Medium|1736143200000
 872-leaf-similar-trees|Easy|1736402400000
+1448-count-good-nodes-in-binary-tree|Medium|1736488800000
