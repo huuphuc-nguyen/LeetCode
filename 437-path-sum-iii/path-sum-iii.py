@@ -31,35 +31,30 @@ class Solution:
         # traverse(root)
 
         # return count[0]
-        count = [0]
+        # Dictionary to store prefix sums
+        prefix = {0: 1}
+        count = 0
 
-        # DFS to find paths starting from a specific node
         def dfs(node, current_sum):
+            nonlocal count
             if not node:
                 return
             
             # Update the current path sum
             current_sum += node.val
-            
-            # Check if the current path sum equals the target
-            if current_sum == targetSum:
-                count[0] += 1
-            
-            # Recur for left and right children
+
+            # Check if there exists a prefix sum such that current_sum - prefix_sum = targetSum
+            count += prefix.get(current_sum - targetSum, 0)
+
+            # Add current_sum to the prefix map
+            prefix[current_sum] = prefix.get(current_sum, 0) + 1
+
+            # Recurse for children
             dfs(node.left, current_sum)
             dfs(node.right, current_sum)
-        
-        # Traverse every node to use as a starting point
-        def traverse(node):
-            if not node:
-                return
-            
-            # Start a new DFS from the current node
-            dfs(node, 0)
-            
-            # Recur for left and right children
-            traverse(node.left)
-            traverse(node.right)
 
-        traverse(root)
-        return count[0]
+            # Backtrack: Remove the current sum from the prefix map
+            prefix[current_sum] -= 1
+
+        dfs(root, 0)
+        return count
