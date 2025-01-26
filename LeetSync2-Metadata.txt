@@ -17,3 +17,4 @@
 1448-count-good-nodes-in-binary-tree|Medium|1736488800000
 437-path-sum-iii|Medium|1736661600000
 1372-longest-zigzag-path-in-a-binary-tree|Medium|1736920800000
+199-binary-tree-right-side-view|Medium|1737871200000
