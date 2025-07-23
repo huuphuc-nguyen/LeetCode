@@ -1,14 +1,14 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        def recursive(left, right):
-            if left >= right:
-                return min(nums[left], nums[right])
+        left, right = 0, len(nums) - 1
 
+        while left < right:
             mid = (left + right) // 2
-
             if nums[mid] > nums[right]:
-                return recursive(mid + 1, right)
+                # Min must be in right half
+                left = mid + 1
             else:
-                return recursive(left, mid)
+                # Min could be at mid or in left half
+                right = mid
 
-        return recursive(0, len(nums) - 1)
+        return nums[left]
