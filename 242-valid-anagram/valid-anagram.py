@@ -20,5 +20,12 @@ class Solution:
         #     ...
         #  }
         # match thoes dicts if they match => true
-        print
-        return Counter(s) == Counter(t)
+        dict1 = collections.defaultdict(int)
+        dict2 = collections.defaultdict(int)
+
+        for char in s:
+            dict1[char] += 1
+        for char in t:
+            dict2[char] += 1
+
+        return dict1 == dict2
